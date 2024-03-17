@@ -8,7 +8,7 @@ import numpy as np
 st.header('Flower Classification CNN Model')
 flower_names = ['daisy', 'dandelion', 'rose', 'sunflower', 'tulip']
 
-model_path = 'C:/Users/hp/OneDrive/Desktop/main flower/main/code/Flower_Recog_Model.h5'
+model_path = 'Flower_Recog_Model.h5'
 
 try:
     model = tf.keras.models.load_model(model_path)
