@@ -1,18 +1,27 @@
 import os
+import keras
+from keras.models import load_model
+import streamlit as st 
 import tensorflow as tf
 import numpy as np
-import streamlit as st
 
-# Define your model. Replace this with your actual model loading code.
-def load_model():
-    # Example model loading code
-    return tf.keras.models.load_model('C:/Users/hp/OneDrive/Desktop/main flower/main/code/Flower_Recog_Model(123).h5')
+st.header('Flower Classification CNN Model')
+flower_names = ['daisy', 'dandelion', 'rose', 'sunflower', 'tulip']
+
+import tensorflow as tf
+
+model_path = 'C:/Users/hp/OneDrive/Desktop/main flower/main/code/Flower_Recog_Model(123).h5'
+
+try:
+    model = tf.keras.models.load_model(model_path)
+    print("Model loaded successfully.")
+except Exception as e:
+    print("Error loading the model:", e)
+
+
 
 def classify_images(image_path, model):
-    # Your classification logic here
-
-    # Example code for model usage
-    input_image = tf.keras.utils.load_img(image_path, target_size=(180, 180))
+    input_image = tf.keras.utils.load_img(image_path, target_size=(180,180))
     input_image_array = tf.keras.utils.img_to_array(input_image)
     input_image_exp_dim = tf.expand_dims(input_image_array, 0)
 
@@ -21,9 +30,6 @@ def classify_images(image_path, model):
     outcome = 'The Image belongs to ' + flower_names[np.argmax(result)] + ' with a score of ' + str(np.max(result) * 100)
     return outcome
 
-# Load your model
-model = load_model()
-
 uploaded_file = st.file_uploader('Upload an Image')
 if uploaded_file is not None:
     with open(os.path.join('upload', uploaded_file.name), 'wb') as f:
@@ -31,9 +37,5 @@ if uploaded_file is not None:
     
     st.image(uploaded_file, width=200)
 
-    # Call classify_images function with the loaded model
-    result = classify_images(uploaded_file.name, model)
+    result = classify_images(uploaded_file, model)
     st.markdown(f"The image belongs to **{result}**")
-
-
-
