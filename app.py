@@ -8,8 +8,6 @@ import numpy as np
 st.header('Flower Classification CNN Model')
 flower_names = ['daisy', 'dandelion', 'rose', 'sunflower', 'tulip']
 
-import tensorflow as tf
-
 model_path = 'C:/Users/hp/OneDrive/Desktop/main flower/main/code/Flower_Recog_Model(123).h5'
 
 try:
@@ -17,8 +15,6 @@ try:
     print("Model loaded successfully.")
 except Exception as e:
     print("Error loading the model:", e)
-
-
 
 def classify_images(image_path, model):
     input_image = tf.keras.utils.load_img(image_path, target_size=(180,180))
