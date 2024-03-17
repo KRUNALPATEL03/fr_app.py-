@@ -26,8 +26,6 @@ def classify_images(uploaded_file, model):
     outcome = 'The Image belongs to ' + flower_names[np.argmax(result)] + ' with a score of ' + str(np.max(result) * 100)
     return outcome
 
-model=model11
-
 uploaded_file = st.file_uploader('Upload an Image')
 if uploaded_file is not None:
     with open(os.path.join('upload', uploaded_file.name), 'wb') as f:
