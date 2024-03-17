@@ -33,5 +33,6 @@ if uploaded_file is not None:
     
     st.image(uploaded_file, width=200)
 
-    result = classify_images(uploaded_file.name,model)
+    ##result = classify_images(uploaded_file.name,model)
+    result = classify_images(os.path.join('upload', uploaded_file.name), model)
     st.markdown(f"The image belongs to **{result}**")
