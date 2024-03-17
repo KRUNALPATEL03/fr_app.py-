@@ -36,6 +36,6 @@ if uploaded_file is not None:
         f.write(uploaded_file.getbuffer())
     
     st.image(uploaded_file, width = 200)
-
-st.markdown(classify_images(uploaded_file))
+    
+    st.markdown(classify_images(uploaded_file))
 
