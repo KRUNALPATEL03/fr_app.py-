@@ -37,5 +37,7 @@ if uploaded_file is not None:
     
     st.image(uploaded_file, width = 200)
     
-    st.markdown(classify_images(uploaded_file))
+    result = classify_images(uploaded_file)
+st.markdown(f"### {result}")
+
 
